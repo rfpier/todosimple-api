@@ -9,6 +9,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.lucasangelo.todosimple.models.Task;
 import com.lucasangelo.todosimple.services.TaskService;
+import com.lucasangelo.todosimple.services.UserService;
 
 import jakarta.validation.Valid;
 
@@ -32,7 +33,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class TaskController {
     
     private TaskService taskService;
-
+    private UserService userService;
 
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
@@ -47,6 +48,7 @@ public class TaskController {
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Task>> findAllByUserId (@PathVariable Long userId) {
+        this.userService.findById(userId);
         List<Task> objs = this.taskService.findAllByUserId(userId);
 
         return ResponseEntity.ok().body(objs);
