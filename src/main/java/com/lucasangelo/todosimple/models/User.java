@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -82,6 +83,7 @@ public class User {
         this.password = password;
     }
 
+    @JsonIgnore
     public List<Task> getTasks() {
         return this.tasks;
     }
