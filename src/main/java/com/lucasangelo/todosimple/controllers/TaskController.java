@@ -35,8 +35,9 @@ public class TaskController {
     private TaskService taskService;
     private UserService userService;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskService taskService, UserService userService) {
         this.taskService = taskService;
+        this.userService = userService;
     }
     
     @GetMapping("/{id}")
